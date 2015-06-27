@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b158258a30cea746ad413697b1d071b, type: 3}
+  m_Name: Greebles2_AlloyDM
+  m_EditorClassIdentifier: 
+  ChannelValues: {x: 0, y: 0, z: .5, w: 0}
+  TexturesGUID:
+  - 
+  - 3736363034363665313561396232613432613261653232616133336664653865
+  - 
+  - 
+  NormalGUID: 3464343636643939613636383065663439393535653733373262396363343134
+  SelectedModes: 00000000040000000000000000000000
+  MaxResolution: 0
+  IsDetailMap: 1
+  IsTerrainMap: 0
+  VarianceBias: 0
+  Width: 1024
+  Height: 1024
+  DoAutoRegenerate: 0
