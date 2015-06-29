@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -27,7 +28,28 @@ namespace UnityStandardAssets.Cameras
 		private Vector3 m_PivotEulers;
 		private Quaternion m_PivotTargetRot;
 		private Quaternion m_TransformTargetRot;
+        private bool m_PivotTargetRotOverride;
 
+        public void PlayerDiedCameraAction()
+        {
+
+            m_PivotTargetRotOverride = true;
+            //Camera rotates 90 degrees when player dies
+            m_PivotTargetRot = Quaternion.Euler(90f, 0f, 0f);
+            m_TurnSpeed = 1;
+            m_MoveSpeed = 1;
+            m_TurnSmoothing = 1;
+            //After a couple seconds rotate up
+            StartCoroutine(LookToSky());
+        }
+
+        IEnumerator LookToSky()
+        {
+            yield return new WaitForSeconds(2);
+            m_PivotTargetRot = Quaternion.Euler(-45f, 0f, 0f);
+            //Show message 'you died...'
+            yield return null;
+        }
         protected override void Awake()
         {
             base.Awake();
@@ -81,26 +103,29 @@ namespace UnityStandardAssets.Cameras
 
             // Rotate the rig (the root object) around Y axis only:
             m_TransformTargetRot = Quaternion.Euler(0f, m_LookAngle, 0f);
-
-            if (m_VerticalAutoReturn)
+            if (!m_PivotTargetRotOverride)
             {
-                // For tilt input, we need to behave differently depending on whether we're using mouse or touch input:
-                // on mobile, vertical input is directly mapped to tilt value, so it springs back automatically when the look input is released
-                // we have to test whether above or below zero because we want to auto-return to zero even if min and max are not symmetrical.
-                m_TiltAngle = y > 0 ? Mathf.Lerp(0, -m_TiltMin, y) : Mathf.Lerp(0, m_TiltMax, -y);
-            }
-            else
-            {
-                // on platforms with a mouse, we adjust the current angle based on Y mouse input and turn speed
-                m_TiltAngle -= y*m_TurnSpeed;
-                // and make sure the new value is within the tilt range
-                m_TiltAngle = Mathf.Clamp(m_TiltAngle, -m_TiltMin, m_TiltMax);
+                if (m_VerticalAutoReturn)
+                {
+                    // For tilt input, we need to behave differently depending on whether we're using mouse or touch input:
+                    // on mobile, vertical input is directly mapped to tilt value, so it springs back automatically when the look input is released
+                    // we have to test whether above or below zero because we want to auto-return to zero even if min and max are not symmetrical.
+                    m_TiltAngle = y > 0 ? Mathf.Lerp(0, -m_TiltMin, y) : Mathf.Lerp(0, m_TiltMax, -y);
+                }
+                else
+                {
+                    // on platforms with a mouse, we adjust the current angle based on Y mouse input and turn speed
+                    m_TiltAngle -= y*m_TurnSpeed;
+                    // and make sure the new value is within the tilt range
+                    m_TiltAngle = Mathf.Clamp(m_TiltAngle, -m_TiltMin, m_TiltMax);
+                }
+
+
+                // Tilt input around X is applied to the pivot (the child of this object)
+                m_PivotTargetRot = Quaternion.Euler(m_TiltAngle, m_PivotEulers.y, m_PivotEulers.z);
             }
 
-            // Tilt input around X is applied to the pivot (the child of this object)
-			m_PivotTargetRot = Quaternion.Euler(m_TiltAngle, m_PivotEulers.y , m_PivotEulers.z);
-
-			if (m_TurnSmoothing > 0)
+            if (m_TurnSmoothing > 0)
 			{
 				m_Pivot.localRotation = Quaternion.Slerp(m_Pivot.localRotation, m_PivotTargetRot, m_TurnSmoothing * Time.deltaTime);
 				transform.localRotation = Quaternion.Slerp(transform.localRotation, m_TransformTargetRot, m_TurnSmoothing * Time.deltaTime);
