@@ -4,7 +4,7 @@ using System.Collections;
 public class PickupCoin : MonoBehaviour
 {
 
-
+    //For debugging
     public bool Clicked;
 
     // Use this for initialization
@@ -16,37 +16,42 @@ public class PickupCoin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (Clicked)
         {
             Clicked = false;
-            transform.parent = Camera.main.transform;
-            StartCoroutine(MoveToScore());
+           Pickup();
         }
-
     }
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            transform.parent = Camera.main.transform;
-            StartCoroutine(MoveToScore());
+            Pickup();
         }
+    }
+
+    private void Pickup()
+    {
+        transform.parent = Camera.main.transform;
+        StartCoroutine(MoveToScore());
+        GetComponent<AudioSource>().Play();
     }
 
     IEnumerator MoveToScore()
     {
         while (true)
         {
-            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 5));
+            var worldPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 5));
             transform.position = Vector3.Lerp(transform.position, worldPoint, 2 * Time.deltaTime);
 
             if ((worldPoint - transform.position).magnitude < 1)
             {
                 Destroy(this.gameObject);
+                //we're all done
                 yield break;
             }
+            //Wait a frame so we're not stuck in a loop
             yield return null;
         }
     }

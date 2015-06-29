@@ -25,6 +25,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             }
             else
             {
+                
                 Debug.LogWarning(
                     "Warning: no main camera found. Third person character needs a Camera tagged \"MainCamera\", for camera-relative controls.");
                 // we use self-relative controls in this case, which probably isn't what the user wants, but hey, we warned them!
@@ -50,7 +51,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             // read inputs
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
-
+          //  Debug.Log("h:" + h + " v:" + v);
             bool fire = CrossPlatformInputManager.GetButtonDown("Fire1");
 
             if (fire)

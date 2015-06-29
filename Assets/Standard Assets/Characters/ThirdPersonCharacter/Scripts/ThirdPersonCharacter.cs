@@ -160,7 +160,19 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			m_Rigidbody.AddForce(extraGravityForce);
 
 			m_GroundCheckDistance = m_Rigidbody.velocity.y < 0 ? m_OrigGroundCheckDistance : 0.01f;
-		}
+
+		    if (m_ForwardAmount > 0)
+		    {
+                Debug.Log("Adding airborn forward");
+                //We're trying to move forward too, give a little push
+		        var velocity = m_Rigidbody.velocity;
+                //Don't care what forward amount is here. if you are pressing forward, you get a max
+                //velocity like most platformers would. Movement is handled in root motion so we
+                //just add a little force.
+		        velocity.z += 10*Time.fixedDeltaTime;
+		        m_Rigidbody.velocity = velocity;
+		    }
+        }
 
 
 		void HandleGroundedMovement(bool crouch, bool jump)
@@ -218,7 +230,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			{
 				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
-			//	m_Animator.applyRootMotion = false;
+				m_Animator.applyRootMotion = false;
 			}
 		}
 	}

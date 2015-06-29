@@ -12,37 +12,45 @@ public class EnemyAI : MonoBehaviour
 
     private EnemySight enemySight;                          // Reference to the EnemySight script.
     private NavMeshAgent nav;                               // Reference to the nav mesh agent.
-    private Transform player;                               // Reference to the player's transform.
-    private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
+    //private Transform _player;                               // Reference to the player's transform.
+    //private PlayerHealth _playerHealth;                      // Reference to the PlayerHealth script.
+    //private PlayerScore _playerScore;
     private LastPlayerSighting lastPlayerSighting;          // Reference to the last global sighting of the player.
     private float chaseTimer;                               // A timer for the chaseWaitTime.
     private float patrolTimer;                              // A timer for the patrolWaitTime.
     private int wayPointIndex;                              // A counter for the way point array.
     private Animator _animator;
 
-    void Awake()
+
+    private Transform _player;                               // Reference to the player's transform.
+    private PlayerHealth _playerHealth;                      // Reference to the PlayerHealth script.
+    private PlayerScore _playerScore;
+
+    private void Awake()
     {
         // Setting up the references.
-        _animator = GetComponent<Animator>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerScore = _player.GetComponent<PlayerScore>();
+
+        _playerHealth = _player.GetComponent<PlayerHealth>();
         enemySight = GetComponent<EnemySight>();
         nav = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag(Tags.player).transform;
-        playerHealth = player.GetComponent<PlayerHealth>();
-        lastPlayerSighting = GameObject.FindGameObjectWithTag("GameController").GetComponent<LastPlayerSighting>();
+        lastPlayerSighting = GameObject.FindGameObjectWithTag(Tags.gameController).GetComponent<LastPlayerSighting>();
     }
-
 
     void Update()
     {
+        Debug.Log(_playerScore);
+        _playerHealth = _player.GetComponent<PlayerHealth>();
         // If the player is in sight and is alive...
-        if (enemySight.playerInSight && playerHealth.health > 0f)
+        if (enemySight.playerInSight && _playerHealth.Health > 0f)
         {
             Debug.Log("Shooting");
             // ... shoot.
             Shooting();
         }
         // If the player has been sighted and isn't dead...
-        else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition && playerHealth.health > 0f)
+        else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition && _playerHealth.Health > 0f)
         {
             Debug.Log("Chasing");
             // ... chase.
