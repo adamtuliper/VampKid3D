@@ -74,6 +74,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a234594cc65a04c8834fd1db83eaa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shot: 0
+  Projectile: {fileID: 5465776, guid: fbb1990400d5c1b41b7a77dce23dad11, type: 2}
+  Speed: 10
+--- !u!114 &11465874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1665ec81d456cd4693e786a40a3bd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   Projectile: {fileID: 5465776, guid: fbb1990400d5c1b41b7a77dce23dad11, type: 2}
   Speed: 10
 --- !u!206 &20600000
@@ -886,7 +900,7 @@ AnimatorState:
   m_Transitions:
   - {fileID: 110169732}
   m_StateMachineBehaviours:
-  - {fileID: 11459502}
+  - {fileID: 11465874}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -968,7 +982,7 @@ AnimatorStateMachine:
     m_Position: {x: 444, y: -48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110206476}
-    m_Position: {x: 432, y: -156, z: 0}
+    m_Position: {x: 420, y: -120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110107382}
@@ -978,8 +992,8 @@ AnimatorStateMachine:
       first: {fileID: 110700000}
       second: []
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 96, y: -120, z: 0}
+  m_AnyStatePosition: {x: 216, y: -120, z: 0}
   m_EntryPosition: {x: 36, y: 108, z: 0}
-  m_ExitPosition: {x: 624, y: -96, z: 0}
+  m_ExitPosition: {x: 672, y: -120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110298501}

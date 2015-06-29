@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Net;
 
-public class DeleteBehavior : StateMachineBehaviour
+public class ShootBehavior : StateMachineBehaviour
 {
 
     //Have we already shot - need to wait before we can reset.
