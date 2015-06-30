@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 5af494b28e120f746bc438d422353e5d
+timeCreated: 1435689435
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: chest
+    100002: HAND
+    100004: HAND1
+    100006: head
+    100008: left_clavicle
+    100010: left_elbow
+    100012: left_elbow 1
+    100014: left_fingers
+    100016: left_fingers_2
+    100018: left_hand
+    100020: left_hip
+    100022: left_knee
+    100024: left_shoulder
+    100026: left_thumb
+    100028: left_thumb_2
+    100030: left_toe
+    100032: left_wrist
+    100034: lower_back
+    100036: neck
+    100038: PANTS
+    100040: right_clavicle
+    100042: right_elbow
+    100044: right_elbow 1
+    100046: right_fingers
+    100048: right_fingers_2
+    100050: right_hand
+    100052: right_hip
+    100054: right_knee
+    100056: right_shoulder
+    100058: right_thumb
+    100060: right_thumb_2
+    100062: right_toe
+    100064: right_wrist
+    100066: root
+    100068: SHIRT
+    100070: SHOE
+    100072: SHOE1
+    100074: waist
+    100076: zombie1:Mesh
+    100078: //RootNode
+    400000: chest
+    400002: HAND
+    400004: HAND1
+    400006: head
+    400008: left_clavicle
+    400010: left_elbow
+    400012: left_elbow 1
+    400014: left_fingers
+    400016: left_fingers_2
+    400018: left_hand
+    400020: left_hip
+    400022: left_knee
+    400024: left_shoulder
+    400026: left_thumb
+    400028: left_thumb_2
+    400030: left_toe
+    400032: left_wrist
+    400034: lower_back
+    400036: neck
+    400038: PANTS
+    400040: right_clavicle
+    400042: right_elbow
+    400044: right_elbow 1
+    400046: right_fingers
+    400048: right_fingers_2
+    400050: right_hand
+    400052: right_hip
+    400054: right_knee
+    400056: right_shoulder
+    400058: right_thumb
+    400060: right_thumb_2
+    400062: right_toe
+    400064: right_wrist
+    400066: root
+    400068: SHIRT
+    400070: SHOE
+    400072: SHOE1
+    400074: waist
+    400076: zombie1:Mesh
+    400078: //RootNode
+    4300000: zombie1:Mesh
+    4300002: PANTS
+    4300004: HAND1
+    4300006: SHOE1
+    4300008: SHIRT
+    4300010: HAND
+    4300012: SHOE
+    9500000: //RootNode
+    13700000: HAND
+    13700002: HAND1
+    13700004: PANTS
+    13700006: SHIRT
+    13700008: SHOE
+    13700010: SHOE1
+    13700012: zombie1:Mesh
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

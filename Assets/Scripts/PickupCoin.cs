@@ -7,6 +7,13 @@ public class PickupCoin : MonoBehaviour
     //For debugging
     public bool Clicked;
 
+
+    private PlayerScore _playerScore;
+    void Awake()
+    {
+        var vampKid = GameObject.FindGameObjectWithTag(Tags.player);
+        _playerScore = vampKid.GetComponent<PlayerScore>();
+    }
    
     // Update is called once per frame
     void Update()
@@ -22,6 +29,7 @@ public class PickupCoin : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            //var playerScore = other.gameObject.GetComponent<PlayerScore>();
             Pickup();
         }
     }
@@ -47,6 +55,7 @@ public class PickupCoin : MonoBehaviour
             //If we're close...
             if ((worldPoint - transform.position).magnitude < 1)
             {
+                _playerScore.CoinScore += 1;
                 Destroy(this.gameObject);
                 //we're all done
                 yield break;

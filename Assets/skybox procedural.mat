@@ -85,6 +85,48 @@ Material:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _FrontTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DownTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
     m_Floats:
       data:
         first:
@@ -101,15 +143,15 @@ Material:
       data:
         first:
           name: _Exposure
-        second: .629999995
+        second: .129999995
       data:
         first:
           name: _SunSize
-        second: .137999997
+        second: .363000005
       data:
         first:
           name: _AtmosphereThickness
-        second: .620000005
+        second: 1.22000003
       data:
         first:
           name: _Parallax
@@ -162,7 +204,7 @@ Material:
       data:
         first:
           name: _SkyTint
-        second: {r: 0, g: .172413826, b: 1, a: 1}
+        second: {r: .858086944, g: .499891877, b: .985294104, a: 1}
       data:
         first:
           name: _GroundColor

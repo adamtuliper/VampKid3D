@@ -9,13 +9,15 @@ public class Navigator : MonoBehaviour
     private Vector3 _destination;
 
     private Vector3 _startingLocation;
-
+    private Transform _playerPosition;
 	// Use this for initialization
 	void Start ()
 	{
 	    _startingLocation = transform.position;
-	    _destination = GameObject.FindGameObjectWithTag("Player").transform.position;
-	    _navMeshAgent = GetComponent<NavMeshAgent>();
+
+	    _destination = GameObject.FindGameObjectWithTag(Tags.player).transform.position;
+	    _playerPosition = GameObject.FindGameObjectWithTag(Tags.player).transform;
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.SetDestination(_destination);
     }
 	
@@ -30,7 +32,7 @@ public class Navigator : MonoBehaviour
         // We arrived, reset the destination
         {
             Debug.Log("Arrived - done navigating, setting location to starting location");
-            _navMeshAgent.SetDestination(_startingLocation);
+            _navMeshAgent.SetDestination(_playerPosition.position);
             
         }
     }
