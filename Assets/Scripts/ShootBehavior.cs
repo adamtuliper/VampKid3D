@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Net;
+using UnityStandardAssets.Characters.ThirdPerson;
 
 public class ShootBehavior : StateMachineBehaviour
 {
 
     //Have we already shot - need to wait before we can reset.
     private bool _shot;
-    public Rigidbody Projectile;
-    public int Speed;
     
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,10 +24,7 @@ public class ShootBehavior : StateMachineBehaviour
         if (stateInfo.normalizedTime > .4f && !_shot)
         {
             _shot = true;
-            var fireLocation = GameObject.FindGameObjectWithTag("FireLocation").transform;
-            var projectile = Instantiate(Projectile, fireLocation.position, Quaternion.identity) as Rigidbody;
-
-            projectile.velocity = animator.gameObject.transform.TransformDirection(Vector3.forward*Speed);
+            animator.gameObject.GetComponent<ThirdPersonCharacter>().Shoot();
         }
     }
 

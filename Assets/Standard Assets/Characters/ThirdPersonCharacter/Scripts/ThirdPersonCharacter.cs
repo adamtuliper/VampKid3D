@@ -29,9 +29,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		CapsuleCollider m_Capsule;
 		bool m_Crouching;
 
+	    public Rigidbody Projectile;
+	    public int ProjectileSpeed = 10;
+	    private AudioSource _audio;
 
-		void Start()
-		{
+        //Position we are shooting from. This is an empty gameobject where we'll spawn our projectiles at
+        private Transform _fireLocation;
+
+        void Start()
+        {
+            _audio = GetComponent<AudioSource>();
 			m_Animator = GetComponent<Animator>();
 			m_Rigidbody = GetComponent<Rigidbody>();
 			m_Capsule = GetComponent<CapsuleCollider>();
@@ -40,10 +47,24 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 			m_Rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 			m_OrigGroundCheckDistance = m_GroundCheckDistance;
-		}
+            _fireLocation = GameObject.FindGameObjectWithTag("FireLocation").transform;
 
+        }
 
-		public void Move(Vector3 move, bool crouch, bool jump)
+        /// <summary>
+        /// Shoot the projectile out
+        /// </summary>
+        public void Shoot()
+        {
+
+            var projectile = (Rigidbody)Instantiate(Projectile, _fireLocation.position, Quaternion.identity);
+
+            projectile.velocity = gameObject.transform.TransformDirection(Vector3.forward * ProjectileSpeed);
+            _audio.Play();
+
+        }
+
+        public void Move(Vector3 move, bool crouch, bool jump)
 		{
 
 			// convert the world relative moveInput vector into a local-relative
@@ -68,8 +89,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				HandleAirborneMovement();
 			}
 
-			ScaleCapsuleForCrouching(crouch);
-			PreventStandingInLowHeadroom();
+			//ScaleCapsuleForCrouching(crouch);
+			//PreventStandingInLowHeadroom();
 
 			// send input and other state parameters to the animator
 			UpdateAnimator(move);
@@ -163,7 +184,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		    if (m_ForwardAmount > 0)
 		    {
-                Debug.Log("Adding airborn forward");
+                //Debug.Log("Adding airborn forward");
                 //We're trying to move forward too, give a little push
 		        var velocity = m_Rigidbody.velocity;
                 //Don't care what forward amount is here. if you are pressing forward, you get a max

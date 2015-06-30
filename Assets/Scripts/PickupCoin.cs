@@ -7,18 +7,13 @@ public class PickupCoin : MonoBehaviour
     //For debugging
     public bool Clicked;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
         if (Clicked)
         {
-            Clicked = false;
+           Clicked = false;
            Pickup();
         }
     }
@@ -42,19 +37,23 @@ public class PickupCoin : MonoBehaviour
     {
         while (true)
         {
+            //Bottom left is 0,0, top right is pixelWidth, pixelHeight or Screen.width/Height 
+            //(cameras can take up a portion of the screen and not the entire screen.width)
             var worldPoint = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 5));
+
+            //Let's move towards that position a little bit at a time
             transform.position = Vector3.Lerp(transform.position, worldPoint, 2 * Time.deltaTime);
 
+            //If we're close...
             if ((worldPoint - transform.position).magnitude < 1)
             {
                 Destroy(this.gameObject);
                 //we're all done
                 yield break;
             }
-            //Wait a frame so we're not stuck in a loop
+
+            //Wait a frame so we're not stuck in a loop, then we'll continue.
             yield return null;
         }
     }
-
-
 }

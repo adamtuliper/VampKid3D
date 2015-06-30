@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FireLocation
   - CameraRig
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -48,6 +48,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         // Fixed update is called in sync with physics
         private void FixedUpdate()
         {
+         //   Debug.Log("H:" + Input.GetAxis("Mouse X"));
+        //    Debug.Log("cpi:" + CrossPlatformInputManager.GetAxis("Mouse X"));
             // read inputs
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -61,11 +63,16 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             bool crouch = Input.GetKey(KeyCode.C);
 
             // calculate move direction to pass to character
+            //however the camera is rotating is where we need to move to
             if (m_Cam != null)
             {
                 // calculate camera relative direction to move:
+                //We will only move the camera in the x and z based on user input
                 m_CamForward = Vector3.Scale(m_Cam.forward, new Vector3(1, 0, 1)).normalized;
+               // Debug.Log("CamForward:" + m_CamForward);
+
                 m_Move = v*m_CamForward + h*m_Cam.right;
+               // Debug.Log("Move is:" + m_Move);
             }
             else
             {

@@ -82,7 +82,7 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
 
         //Hide vampire
-        var vampire = transform.FindChild("vampire");
+        var vampire = transform.FindChild("vamp_complete");
         if (!vampire)
         {
             Debug.LogError("Couldn't find child vampire object of VampKid character controller");

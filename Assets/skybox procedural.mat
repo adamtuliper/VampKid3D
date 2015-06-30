@@ -105,11 +105,11 @@ Material:
       data:
         first:
           name: _SunSize
-        second: .549000025
+        second: .137999997
       data:
         first:
           name: _AtmosphereThickness
-        second: 1.23000002
+        second: .620000005
       data:
         first:
           name: _Parallax
@@ -162,7 +162,7 @@ Material:
       data:
         first:
           name: _SkyTint
-        second: {r: .316027373, g: .136245668, b: .772058845, a: 1}
+        second: {r: 0, g: .172413826, b: 1, a: 1}
       data:
         first:
           name: _GroundColor

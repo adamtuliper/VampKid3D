@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Tags : MonoBehaviour
 {
+    public const string bullet = "Bullet";
     public const string cameraRig = "CameraRig";
     // A list of tag strings.
     public const string player = "Player";

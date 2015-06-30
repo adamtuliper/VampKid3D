@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
         // Setting up the references.
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _playerScore = _player.GetComponent<PlayerScore>();
-
+        _animator = GetComponent<Animator>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
         enemySight = GetComponent<EnemySight>();
         nav = GetComponent<NavMeshAgent>();
@@ -40,19 +40,19 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(_playerScore);
+//        Debug.Log(_playerScore);
         _playerHealth = _player.GetComponent<PlayerHealth>();
         // If the player is in sight and is alive...
         if (enemySight.playerInSight && _playerHealth.Health > 0f)
         {
-            Debug.Log("Shooting");
+//            Debug.Log("Shooting");
             // ... shoot.
             Shooting();
         }
         // If the player has been sighted and isn't dead...
         else if (enemySight.personalLastSighting != lastPlayerSighting.resetPosition && _playerHealth.Health > 0f)
         {
-            Debug.Log("Chasing");
+//            Debug.Log("Chasing");
             // ... chase.
             Chasing();
         }
@@ -81,7 +81,7 @@ public class EnemyAI : MonoBehaviour
         // If the the last personal sighting of the player is not close...
         if (sightingDeltaPos.sqrMagnitude > 4f)
         {
-            Debug.Log("Setting enemy nav destination to last sighting");
+//            Debug.Log("Setting enemy nav destination to last sighting");
             // ... set the destination for the NavMeshAgent to the last personal sighting of the player.
             nav.destination = enemySight.personalLastSighting;
         }
@@ -92,7 +92,7 @@ public class EnemyAI : MonoBehaviour
         // If near the last personal sighting...
         if (nav.remainingDistance < nav.stoppingDistance)
         {
-            Debug.Log("Our chase has finished. Wait before chasing again");
+           // Debug.Log("Our chase has finished. Wait before chasing again");
             // ... increment the timer.
             chaseTimer += Time.deltaTime;
 
@@ -144,8 +144,15 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Not time to move yet, hanging out waiting for timer");
                 _animator.SetBool("Walk", false);
             }
-            // Set the destination to the patrolWayPoint.
-            nav.destination = patrolWayPoints[wayPointIndex].position;
+
+            if (nav.destination != patrolWayPoints[wayPointIndex].position)
+            {
+                Debug.Log("Setting walk..");
+                _animator.SetBool("Walk", true);
+                // Set the destination to the patrolWayPoint.
+                nav.destination = patrolWayPoints[wayPointIndex].position;
+            }
+           
         }
         else
         {
