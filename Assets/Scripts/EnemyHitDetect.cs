@@ -11,7 +11,8 @@ public class EnemyHitDetect : MonoBehaviour
             var animator = zombie.GetComponent<Animator>();
             Destroy(other.gameObject);
             //Destroy(zombie);
-            animator.SetTrigger("Death");
+            animator.SetBool("Walk", false);
+            animator.SetBool("Death", true);
         }
     }
 }
